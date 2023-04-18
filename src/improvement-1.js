@@ -5,15 +5,15 @@
  */
 
 // FUNCTION 1
-export default function cntRbt(list) {
-  var count = 0;
+export default function countRobots(list) {
+  var robotsCounter = 0;
   if (Array.isArray(list)) {
-    throw new Error ("Invalid input! Please retry with an array input")
+    throw new Error("Invalid input! Please retry with an array input");
   }
-  for (var i = 0; i < list.length; i++) {
-    if (list[i] == "R") {
-      count++;
+  for (const item of list) {
+    if (item === "R") {
+      robotsCounter++;
     }
   }
-  return count;
+  return robotsCounter;
 }

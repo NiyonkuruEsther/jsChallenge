@@ -5,13 +5,11 @@
  */
 
 // FUNCTION 2
-export default function processItems(items) {
-  const processedItems = [];
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    if (item.type === "Food") {
-      processedItems.push(item);
-    }
+export default function filterProcessedProducts(products) {
+  if (!Array.isArray(products)) {
+    throw new Error("Invalid input! Please retry with an array input");
   }
-  return processedItems;''
+  const foodItems = products.filter((product) => product.type === "Food");
+
+  return foodItems;
 }
