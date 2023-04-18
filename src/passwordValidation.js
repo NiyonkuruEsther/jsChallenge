@@ -11,11 +11,19 @@ export default function isValidPassword(password = "") {
   if (typeof password !== "string") password = String(password);
   // /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/
 
-  const validate = /^(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{10}$/i;
-  if (forbiddenPasswords.includes(password) || ~(/[A-Z]/.test(password) && /[a-z]/.test(password))) {
+  const validatePassword = /^(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{10}$/;
+  let validateUniqnessOfCharacters = new Set([...password]);
+  // console.log(validateUniqnessOfCharacters.size);
+
+  if (
+    forbiddenPasswords.includes(password) ||
+    !/[A-Z]/.test(password) ||
+    !/[a-z]/.test(password) ||
+    validateUniqnessOfCharacters.size < 4
+  ) {
     return false;
   } else {
-    if (validate.test(password)) {
+    if (validatePassword.test(password)) {
       return true;
     } else {
       return false;
