@@ -13,5 +13,5 @@ export default function processItems(items) {
       processedItems.push(item);
     }
   }
-  return processedItems;
+  return processedItems;''
 }
