@@ -13,7 +13,7 @@ export default function penaltyPoints(password = "") {
   // * * * INSERT YOUR CODE HERE * * * * * * * * * * * * * *
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   //
-
+// Why not working
   let maxChar = 0;
   let currentChar = 0;
 
