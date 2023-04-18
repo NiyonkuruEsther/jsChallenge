@@ -13,13 +13,15 @@ export default function isValidPassword(password = "") {
 
   const validatePassword = /^(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{10}$/;
   let validateUniqnessOfCharacters = new Set([...password]);
+  const validateForAscOrDesc = /(1234567890)|(0987654321)/;
   // console.log(validateUniqnessOfCharacters.size);
 
   if (
     forbiddenPasswords.includes(password) ||
     !/[A-Z]/.test(password) ||
     !/[a-z]/.test(password) ||
-    validateUniqnessOfCharacters.size < 4
+    validateUniqnessOfCharacters.size < 4 ||
+    validateForAscOrDesc.test(password)
   ) {
     return false;
   } else {
