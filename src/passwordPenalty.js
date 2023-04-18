@@ -13,23 +13,18 @@ export default function penaltyPoints(password = "") {
   // * * * INSERT YOUR CODE HERE * * * * * * * * * * * * * *
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   //
-// Why not working
-  let maxChar = 0;
-  let currentChar = 0;
+
+  let maxChar = 1;
+  let currentChar = 1;
 
   for (let i = 1; i < password.length; i++) {
     if (password.charCodeAt(i) === password.charCodeAt(i - 1) + 1) {
       currentChar++;
       maxChar = Math.max(maxChar, currentChar);
     } else {
-      currentChar = 0;
+      currentChar = 1;
     }
   }
-  console.log(
-    `Password: ${password} -> Penalty points: ${maxChar} ${
-      maxChar >= 3 ? 2 : maxChar === 2 ? 1 : 0
-    }`
-  );
 
   if (maxChar >= 3) {
     return 2;

@@ -12,11 +12,31 @@ export default function isValidPassword(password = "") {
   // /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/
 
   const validatePassword = /^(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{10}$/;
+  for (let i = 0; i < password.length - 3; i++) {
+    const seq = password.substring(i, i + 4);
+    if (/^\d{4}$/.test(seq)) {
+      if (
+        parseInt(seq[1]) === parseInt(seq[0]) + 1 &&
+        parseInt(seq[2]) === parseInt(seq[1]) + 1 &&
+        parseInt(seq[3]) === parseInt(seq[2]) + 1
+      ) {
+        return false;
+      } else if (
+        parseInt(seq[1]) === parseInt(seq[0]) - 1 &&
+        parseInt(seq[2]) === parseInt(seq[1]) - 1 &&
+        parseInt(seq[3]) === parseInt(seq[2]) - 1
+      ) {
+        return false;
+      }
+    }
+  }
+
   let validateUniqnessOfCharacters = new Set([...password]);
   if (
     forbiddenPasswords.includes(password) ||
     !/[A-Z]/.test(password) ||
     !/[a-z]/.test(password) ||
+    !/[0-9]/.test(password) ||
     validateUniqnessOfCharacters.size < 4
   ) {
     return false;
@@ -27,6 +47,7 @@ export default function isValidPassword(password = "") {
       return false;
     }
   }
+  // okay
 
   // * * * YOUR CODE GOES IN HERE ... * * *
   /*
