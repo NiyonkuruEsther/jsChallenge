@@ -47,7 +47,6 @@ export default function isValidPassword(password = "") {
       return false;
     }
   }
-  // okay
 
   // * * * YOUR CODE GOES IN HERE ... * * *
   /*

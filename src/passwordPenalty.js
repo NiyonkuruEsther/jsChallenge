@@ -7,31 +7,35 @@
  */
 export default function penaltyPoints(password = "") {
   // The following line ensures, that password is always a string, like the number 128 -> string "128"
-  if (typeof password !== "string") password = String(password);
 
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // * * * INSERT YOUR CODE HERE * * * * * * * * * * * * * *
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   //
-
-  let maxChar = 1;
-  let currentChar = 1;
-
-  for (let i = 1; i < password.length; i++) {
-    if (password.charCodeAt(i) === password.charCodeAt(i - 1) + 1) {
-      currentChar++;
-      maxChar = Math.max(maxChar, currentChar);
+  if (typeof password !== "string") password = String(password);
+  if (!password || password === "" || password == "null") {
+    return 0;
+  } else {
+    let res = 0;
+    let regexNumber = /(\d)\1+/;
+    let regexLetter = /(\w)\1+/;
+    let findDublpsNumber = password.match(regexNumber);
+    let findDublpslettel = password.match(regexLetter);
+    if (findDublpsNumber && findDublpslettel) {
+      res = res + findDublpsNumber[0].length + findDublpslettel[0].length;
+    }
+    if (findDublpsNumber) {
+      res = res + findDublpsNumber[0].length;
+    }
+    if (findDublpslettel) {
+      res = res + findDublpslettel[0].length;
+    }
+    if (res === 0) {
+      return 0;
+    } else if (res <= 2) {
+      return 1;
     } else {
-      currentChar = 1;
+      return 2;
     }
   }
-
-  if (maxChar >= 3) {
-    return 2;
-  } else if (maxChar === 2) {
-    return 1;
-  } else {
-    return 0;
-  }
 }
-// Testing pushing
