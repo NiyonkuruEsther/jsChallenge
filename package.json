@@ -7,16 +7,6 @@
     "test": "jest --verbose",
     "test:watch": "jest --watch --verbose"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OjembaAssessment/assessment-march2023.git"
-  },
-  "author": "Matthias Moosburger (MaibornWolff GmbH)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/OjembaAssessment/assessment-march2023/issues"
-  },
-  "homepage": "https://github.com/OjembaAssessment/assessment-march2023#readme",
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",
